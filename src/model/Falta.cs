@@ -8,7 +8,6 @@ namespace app.src.model
     public class Falta
     {
         public long Id { get; set; }
-        public long UserFaltas { get; set; }
         public DateTime DataFalta { get; set; }
 
         public long UserId { get; set; }

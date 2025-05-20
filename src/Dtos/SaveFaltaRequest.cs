@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace app.src.Dtos
 {
-    public class SaveMateriaRequest
+    public class SaveFaltaRequest
     {
-
-        [Required]
-        public string Nome { get; set; } = "";
-        [Required]
-        public long MaxFaltas { get; set; }
         [Required]
         public long UserId { get; set; }
+        [Required]
+        public long MateriaId { get; set; }
     }
 }
