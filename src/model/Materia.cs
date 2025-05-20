@@ -15,7 +15,8 @@ namespace app.src.model
         public long MaxFaltas { get; set; }
 
         public long UserId { get; set; }
-        public User User{ get; set; } = new User();
+        public User User { get; set; } = new User();
 
+        public List<Falta> Faltas { get; set; } = new List<Falta>();
     }
 }

@@ -20,9 +20,9 @@ namespace app.src.controller
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Materia>>> getAllMaterias([FromBody] long UserId)
+        public async Task<ActionResult<List<Materia>>> getAllMaterias([FromQuery] long UserId)
         {
-            return await _materiaRepository.getUserMaterias(UserId);
+            return Ok(await _materiaRepository.getUserMaterias(UserId));
         }
 
         [HttpPost]

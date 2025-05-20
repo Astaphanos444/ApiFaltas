@@ -20,7 +20,7 @@ namespace app.src.controller
         }
         [HttpGet]
         public async Task<ActionResult<List<Falta>>> getFaltas([FromQuery] long UserId, [FromQuery] long MateriaId) {
-            return await _faltaRepository.getFaltas(UserId, MateriaId);
+            return Ok(await _faltaRepository.getFaltas(UserId, MateriaId));
             
         }
 

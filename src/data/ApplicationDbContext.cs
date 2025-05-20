@@ -18,5 +18,15 @@ namespace app.src.data
         public DbSet<User> Users { get; set; }
         public DbSet<Materia> Materias { get; set; }
         public DbSet<Falta> Faltas { get; set; }  
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Falta>()
+                .HasOne(f => f.User)
+                .WithMany(u => u.Faltas)
+                .HasForeignKey(f => f.UserId)
+                .OnDelete(DeleteBehavior.Restrict); // OU DeleteBehavior.NoAction
+        }
     }
 }

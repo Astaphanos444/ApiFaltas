@@ -26,13 +26,13 @@ namespace app.src.controller
 
             return Ok(res);
         }
-
-        public async Task<ActionResult<User>> saveUser(SaveUserRequest request)
+        [HttpPost]
+        public async Task<ActionResult<User>> saveUser([FromBody]SaveUserRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             
-            return await _userRepository.saveUser(request);
+            return Ok(await _userRepository.saveUser(request));
         }
     }
 }
