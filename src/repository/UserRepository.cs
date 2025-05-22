@@ -26,6 +26,13 @@ namespace app.src.repository
             return user;
         }
 
+        public async Task<User?> getUserByName(string name)
+        {
+            var res = await _context.Users.FirstOrDefaultAsync(x => x.UserName.ToLower() == name.ToLower());
+            if (res == null) return null;
+            
+            return res;
+        }
 
         public async Task<User> saveUser(SaveUserRequest request)
         {
