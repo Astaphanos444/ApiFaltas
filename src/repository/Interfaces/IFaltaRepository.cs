@@ -11,5 +11,6 @@ namespace app.src.repository.Interfaces
     {
         Task<List<Falta>> getFaltas(long UserId, long MateriaId);
         Task<Falta?> saveFalta(SaveFaltaRequest request);
+        Task<Falta?> deleteFalta(long faltaId);
     }
 }

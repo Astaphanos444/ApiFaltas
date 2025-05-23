@@ -19,9 +19,10 @@ namespace app.src.controller
             _faltaRepository = faltaRepository;
         }
         [HttpGet]
-        public async Task<ActionResult<List<Falta>>> getFaltas([FromQuery] long UserId, [FromQuery] long MateriaId) {
+        public async Task<ActionResult<List<Falta>>> getFaltas([FromQuery] long UserId, [FromQuery] long MateriaId)
+        {
             return Ok(await _faltaRepository.getFaltas(UserId, MateriaId));
-            
+
         }
 
         [HttpPost]
@@ -31,7 +32,16 @@ namespace app.src.controller
                 return BadRequest(ModelState);
 
             var res = await _faltaRepository.saveFalta(request);
-            if (res == null) return BadRequest(); 
+            if (res == null) return BadRequest();
+
+            return Ok(res);
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> deleteFalta([FromQuery] long faltaId)
+        {
+            var res = await _faltaRepository.deleteFalta(faltaId);
+            if (res == null) return BadRequest();
 
             return Ok(res);
         }

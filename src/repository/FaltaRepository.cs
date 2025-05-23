@@ -45,5 +45,16 @@ namespace app.src.repository
 
             return falta;
         }
+
+        public async Task<Falta?> deleteFalta(long faltaId)
+        {
+            Falta falta = await _context.Faltas.FirstOrDefaultAsync(x => x.Id == faltaId);
+            if (falta == null) return null;
+
+            _context.Faltas.Remove(falta);
+            await _context.SaveChangesAsync();
+            
+            return falta;
+        }
     }
 }
