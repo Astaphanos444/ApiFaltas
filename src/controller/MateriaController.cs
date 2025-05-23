@@ -36,5 +36,14 @@ namespace app.src.controller
 
             return Ok(materia);
         }
+
+        [HttpDelete]
+        public async Task<ActionResult> deleteMateria([FromQuery] long materiaId, [FromQuery] long userId)
+        {
+            var materia = await _materiaRepository.deleteMateria(userId, materiaId);
+            if (materia == null) return BadRequest();
+
+            return Ok(materia);
+        }
     }
 }

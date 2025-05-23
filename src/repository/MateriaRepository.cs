@@ -18,6 +18,17 @@ namespace app.src.repository
             _context = context;
         }
 
+        public async Task<Materia?> deleteMateria(long userId, long materiaId)
+        {
+            var materia = await _context.Materias.FirstOrDefaultAsync(materia => materia.UserId == userId && materia.Id == materiaId);
+            if (materia == null) return null;
+
+            _context.Materias.Remove(materia);
+            await _context.SaveChangesAsync();
+            
+            return materia;
+        }
+
         public async Task<List<Materia>> getUserMaterias(long UserId)
         {
             return await _context.Materias.AsQueryable()
@@ -44,5 +55,7 @@ namespace app.src.repository
 
             return materia;
         }
+
+        
     }
 }

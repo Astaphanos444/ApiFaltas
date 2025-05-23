@@ -11,6 +11,6 @@ namespace app.src.repository.Interfaces
     {
         Task<List<Materia>> getUserMaterias(long UserId);
         Task<Materia?> saveMateria(SaveMateriaRequest request);
-
+        Task<Materia?> deleteMateria(long userId, long materiaId);
     }
 }
